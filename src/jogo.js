@@ -33,7 +33,11 @@ export const jogo = {
         const data = await rawData.json()
         console.log("JSON: ",rawData);
 
-        for (let i = 0; i < Math.max(this.letras.length, 3); i++) {
+        if (!data.length) {
+            return false;
+        }
+
+        for (let i = 0; i < this.letras.length; i++) {
             if (!palavraParaValidar.includes(this.letras[i])) {
                 this.error = true;
                 return false;
